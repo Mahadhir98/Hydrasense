@@ -1,6 +1,20 @@
+import { createChatBotMessage } from "react-chatbot-kit";
+
+const botName = "HydraBot";
+
 const config = {
-  initialMessages: [{ type: "text", id: 1, message: "Hi! How can I help you with hydration today?" }],
-  botName: "Hydrasense Bot",
+  botName: botName,
+  initialMessages: [
+    createChatBotMessage("👋 Hi, I am HydraBot. Welcome to HydraSense! Ask me anything about hydration."),
+  ],
+  customStyles: {
+    botMessageBox: {
+      backgroundColor: "#007bff",
+    },
+    chatButton: {
+      backgroundColor: "#007bff",
+    },
+  },
 };
 
 export default config;

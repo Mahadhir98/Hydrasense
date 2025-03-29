@@ -52,7 +52,7 @@ const UserList = ({ onBack }) => {
   };
 
   return (
-    <div>
+    <div class="main-container">
       <h2>Saved Users</h2>
       <button onClick={onBack}>← Back to Form</button>
       {loading ? (

@@ -183,5 +183,40 @@ app.delete('/api/user/:id', async (req, res) => {
   }
 });
 
+app.post("/api/search", async (req, res) => {
+  let { query } = req.body;
+  const apiKey = process.env.SERPAPI_API_KEY;
+
+  // ✅ Add hydration context if missing
+  const hydrationKeywords = ["hydration", "water", "dehydration", "drink", "fluids"];
+  const lowerQuery = query.toLowerCase();
+  const isHydrationQuery = hydrationKeywords.some(keyword => lowerQuery.includes(keyword));
+
+  if (!isHydrationQuery) {
+    // ✅ Force hydration + people context
+    query = `hydration for humans: ${query}`;
+  } else {
+    query = `hydration: ${query}`; // still reinforce hydration context
+  }
+
+  try {
+    const response = await axios.get(
+      `https://serpapi.com/search.json?q=${encodeURIComponent(query)}&api_key=${apiKey}`
+    );
+
+    const answer =
+      response.data?.answer_box?.answer ||
+      response.data?.answer_box?.snippet ||
+      response.data?.organic_results?.[0]?.snippet ||
+      "❌ Sorry, I couldn't find a relevant hydration answer.";
+
+    res.json({ answer });
+  } catch (error) {
+    console.error("SerpAPI Error:", error?.response?.data || error.message);
+    res.status(500).json({ error: "Failed to fetch result from Google Search API" });
+  }
+});
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

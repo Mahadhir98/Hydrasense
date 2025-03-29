@@ -142,6 +142,12 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+  
+}
+.react-chatbot-kit-chat-container {
+  position: relative;
+  width: 325px !important;
+  margin-top: 90px;
 }
 
 @keyframes slideIn {
@@ -165,6 +171,8 @@
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   position: relative;
   animation: slideIn 0.3s ease-out;
+  margin-top: 130px;
+  margin-left: 110px;
 }
 
 .modal-box h2 {
@@ -239,3 +247,38 @@
   cursor: pointer;
 }
 
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #b0dbec;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+/* Make each section flexible */
+.left-section, .middle-section, .right-section {
+  flex: 1;
+}
+
+/* Optional: tweak spacing */
+.left-section {
+  padding-right: 10px;
+  width: 450px;
+}
+.middle-section {
+  text-align: center;
+}
+.right-section {
+  padding-left: 10px;
+}
+body {
+  background-image: url('../src/assets/waterBg.jpg'); /* or a direct link */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}

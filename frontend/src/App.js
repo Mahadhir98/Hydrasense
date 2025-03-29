@@ -65,10 +65,13 @@ function MainFormPage() {
   };
 
   return (
+    
+    <div className="main-container">
     <div className="container">
       {/* LEFT: Form */}
       <div className="left-section">
-        <h1>Hydrasense</h1>
+        
+        <h1 style={{ fontFamily: 'math' }}>Hydrasense</h1>
 
         <form onSubmit={handleSubmit} className="user-form">
           {["name", "age", "heartRate", "sweatRate", "bodyTemperature", "email"].map((field) => (
@@ -124,6 +127,7 @@ function MainFormPage() {
           <ChatbotComponent />
         </div>
       </div>
+    </div>
     </div>
   );
 }
