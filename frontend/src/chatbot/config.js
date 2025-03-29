@@ -1,10 +1,6 @@
-import { createChatBotMessage } from "react-chatbot-kit";
-
 const config = {
-  botName: "HydraBot",
-  initialMessages: [
-    createChatBotMessage("Hello! How can I assist you with hydration and health?")
-  ],
+  initialMessages: [{ type: "text", id: 1, message: "Hi! How can I help you with hydration today?" }],
+  botName: "Hydrasense Bot",
 };
 
 export default config;

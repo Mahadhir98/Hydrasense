@@ -1,20 +1,16 @@
 class MessageParser {
-    constructor(actionProvider) {
-      this.actionProvider = actionProvider;
-    }
-  
-    parse(message) {
-      const lowerCaseMessage = message.toLowerCase();
-  
-      if (lowerCaseMessage.includes("hydration")) {
-        this.actionProvider.handleHydrationInfo();
-      } else if (lowerCaseMessage.includes("health")) {
-        this.actionProvider.handleHealthTips();
-      } else {
-        this.actionProvider.handleUnknown();
-      }
+  constructor(actionProvider) {
+    this.actionProvider = actionProvider;
+  }
+
+  parse(message) {
+    const lower = message.toLowerCase();
+    if (lower.includes("water") || lower.includes("drink")) {
+      this.actionProvider.handleWaterReminder();
+    } else {
+      this.actionProvider.handleUnknown();
     }
   }
-  
-  export default MessageParser;
-  
+}
+
+export default MessageParser;
